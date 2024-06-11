@@ -7,30 +7,40 @@ const perguntas = [
     {
    enunciado: "uma mulher indigena, casada com o pajé, sai para lavar roupas no rio e se depara com o boto cor de rosa que tenta a seduzir.",
    alternativas: [
-    "ela é seduzida pelo boto e acaba engravidando",
-    "ela recusa o boto e ele a sequestra"
+   texto: "ela é seduzida pelo boto e acaba engravidando",
+    afirmacao: "ela recusa o boto e ele a sequestra"
    ]
     },
     {
         enunciado: "o pajé enfurecido vai atras do boto para mata-lo",
         alternativas: [
-            "ela foge com o boto e os dois criam o bebe",
-            "ela ajuda o pajé a matar o boto e o pajé cria a criança como dele "
+           texto: "ela foge com o boto e os dois criam o bebe",
+           afirmacao: "ela ajuda o pajé a matar o boto e o pajé cria a criança como dele "
         ]
     },
     {
         enunciado: "o pajé enfurecido vai atras do boto para mata-lo",
         alternativas: [
-            "ela ajuda o pajé a matar o boto e ele a leva para casa",
-            "eles lutam mas a mulher insiste para que o boto fique vivo para pagar pensao"
+            texto:"ela ajuda o pajé a matar o boto e ele a leva para casa",
+            afirmacao:"eles lutam mas a mulher insiste para que o boto fique vivo para pagar pensao"
         ]
     }
 ]; 
 let atual = 0;
 let perguntaAtual;
-function mostrapergunta() {
+
+function mostraPergunta() {
     perguntaAtual = perguntas[atual];
-    caixaPerguntas.textContent= perguntaAtual.enunciado;
+    caixaPerguntas.textContent = perguntaAtual.enunciado;
+    mostraAlternativas();
 }
 
-mostrapergunta()
+function mostraAlternativas() {
+    for (const alternativa of perguntaAtual.alternativas) {
+        const botaoAlternativas = document.createElement("button");
+        botaoAlternativas.textContent = alternativa;
+        caixaAlternativas.appendChild(botaoAlternativas);
+    }
+}
+
+mostraPergunta();
